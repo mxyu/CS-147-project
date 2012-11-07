@@ -30,26 +30,27 @@
 
   <h2>Sign up</h2>
   <div class="hint">
-    Already have an account? <a href="login.html">Sign in</a>
+    Already have an account? <a href="login.php">Sign in</a>
   </div>
     <form action="profile.html" method="post">
-<div class="full-name ">
-        <label>Full name</label>
-        <div class="input-wrapper">
-          <input autocomplete="off" class="text-input" name="oauth_signup_client[fullname]" placeholder="" type="text" value="">
-        </div>
-      </div>
       <div class="email ">
         <label>Email</label>
         <div class="input-wrapper">
-            <input autocomplete="off" class="text-input" name="oauth_signup_client[email]" placeholder="" type="text"  value="">
+            <input autocomplete="off" type="text"  id="emailaddress" name="emailaddress" style="margin-top:5px;" />
         </div>
       </div>
       <div class="password ">
         <label>Password</label>
         <div class="input-wrapper">
-          <input autocomplete="off" class="text-input" name="oauth_signup_client[password]" placeholder="" type="password">
+            <input autocomplete="off" class="crosschecker" type="password" id="password1" name="password1"  style="margin-top:5px;" />
         </div>
+	  </div>
+      <div class="password ">
+        <label>Confirm Password</label>
+        <div class="input-wrapper">
+             <input  class="crosschecked" type="password" id="password2" name="password2"  style="margin-top:5px;" />
+        </div>
+	  </div>
 
  <span class="w-button-common w-button-bright"><input name="commit" type="submit" value="Sign Up for BookNotes" /></span>
 </form>

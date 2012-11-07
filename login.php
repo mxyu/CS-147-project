@@ -8,7 +8,8 @@
 			$_SESSION['userid'] = $_COOKIE['userid'];
 		}
 	}
-	?>
+	
+?>
 
 <!DOCTYPE html> 
 <html>
@@ -41,32 +42,24 @@
 
 
   <h2>Sign in</h2>
-<div class="body">
-  <form action="submitLogin.php" method="post">
-    <fieldset class="inputs">
-      <label>Email</label>
-      <div class="input-wrapper">
-		<input class="search-query span2"  type="text" id="emailaddress" name="emailaddress" placeholder="Email">
-      </div>
-<!--       <div class="hint">You can also use your email address</div>-->
-      <label>Password</label>
-      <div class="input-wrapper">
-        <input class="search-query span2"  type="password" id="password" name="password" placeholder="Password">
-      </div>
-    </fieldset>
-                                <button type="submit" name="submit"  class="btn btn-primary" style="margin-left:5px;">Log in</button>
-  </form>
-
-  
-  
-</div>
-
-	<div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
-		<div data-role="navbar" class="nav-glyphish-example" data-grid="c">
-		<ul>
-		</ul>
-		</div>
+	<div class="body">
+	  <form action="submitLogin.php" method="post" data-ajax="false">
+		<fieldset class="inputs">
+		  <label>Email</label>
+		  <div class="input-wrapper">
+			<input class="search-query span2"  type="text" id="emailaddress" name="emailaddress" placeholder="Email">
+		  </div>
+	<!--       <div class="hint">You can also use your email address</div>-->
+		  <label>Password</label>
+		  <div class="input-wrapper">
+			<input class="search-query span2"  type="password" id="password" name="password" placeholder="Password">
+		  </div>
+		</fieldset>
+			<button type="submit" name="submit"  class="btn btn-primary" style="margin-left:5px;">Log in</button>
+	  </form>
 	</div>
+
+
 	
 
 </div><!-- /page -->
