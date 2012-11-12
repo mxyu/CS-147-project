@@ -40,7 +40,7 @@
 
 	<div data-role="header">
 		<h1>Your Profile</h1>
-		<a href="logout.php" data-icon="back">Logout</a>
+		<a href="logout.php">Logout</a>
 		<a href="editProfile.php" >Edit</a>
 
 	</div><!-- /header -->
@@ -106,7 +106,7 @@
 	<div data-role="footer" data-id="samebar" data-position="fixed" data-tap-toggle="false">
 		<div data-role="navbar" data-grid="b">
 		<ul>
-			<li><a href="profile.php" class="ui-btn-active">Profile</a></li>
+			<li><a href="profile.php" class="ui-btn-active ui-state-persist">Profile</a></li>
 			<li><a href="buyerPage.php">Buy</a></li>
 			<li><a href="sellerPage.php">Sell</a></li>
 			<!--<li><a href="messages.php" id="skull" data-icon="custom">Messages</a></li> -->

@@ -10,10 +10,10 @@
 		a:-webkit-any-link{
 			text-decoration: none;
 		}
-		a:-webkit-any-link:active, hover{
-			text-decoration: underline;
-			color: red;
-		}
+	/*	a:-webkit-any-link:active, hover{
+			text-decoration: none;
+			color: white;
+		}*/
 		
 		.input-wrapper{
 			margin-left: 10px;
