@@ -22,13 +22,13 @@
 <div data-role="page" id="page1">
     <div data-theme="a" data-role="header">
         <h3>
-            Rating Complete
+            Message Sent
         </h3>
     </div>
     <div data-role="content">
-        <a data-role="button" data-theme="e" href="profile.html"
+        <a data-role="button" data-theme="e" href="messages.php"
         data-icon="check" data-iconpos="left">
-            Return to Profile
+            Return to Messages
         </a>
     </div>
 </div>

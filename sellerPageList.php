@@ -1,3 +1,21 @@
+<?php
+
+	session_start();
+	
+	// If the session vars aren't set, try to set them with a cookie.
+	if (!isset($_SESSION['userid'])) {
+		if (isset($_COOKIE['userid'])) {
+			$_SESSION['userid'] = $_COOKIE['userid'];
+		}
+	}
+	
+	if (!isset($_SESSION['userid'])) {
+		header("Location: login.php");
+		exit();
+	}
+?>
+
+
 <!DOCTYPE php> 
 <html>
 
@@ -55,44 +73,54 @@
 <div data-role="page" id="filter">
 
 	<div data-role="header">
-		<h1>Who wants "Current Book?"</h1>
-		<a href="buyerPage.php" data-icon="back">Back</a>
+	<?php
+		require_once('connectvars.php');
+		$dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+		$textbook_id = $_GET["textbook_id"];
+		$query4 = "SELECT * FROM textbooks WHERE id = '$textbook_id'";
+		$result4 = mysqli_query($dbc, $query4);
+		while ($row4 = mysqli_fetch_assoc($result4)) {
+			$textbook_name = $row4["title"];
+			echo "<h1>Who is buying ".$textbook_name."?</h1>";
+		}		
+	?>
+		<a href="sellerPage.php" data-icon="back">Back</a>
 
 	</div><!-- /header -->
 	
 	<div data-role="content">
 		<div class="content-primary">
 		<ul data-role="listview" data-theme="d" data-divider-theme="d">
-			<li><a href="#message" data-rel="popup" data-position-to="window" data-transition="pop">
-				
+			<?php
+				$textbook_id = $_GET["textbook_id"];				
+				$query2 = "SELECT * FROM user_trade_objects WHERE buying = 1 AND trade_object_id = '$textbook_id'";
+				$result2 = mysqli_query($dbc, $query2);
+				while ($row2 = mysqli_fetch_assoc($result2)) {
+					$user_id = $row2["user_id"];
+					$query3 = "SELECT * FROM users WHERE id = '$user_id'";
+					$result3 = mysqli_query($dbc, $query3);
+					while ($row3 = mysqli_fetch_assoc($result3)){
+						echo "<li><a href='#message' data-rel='popup' data-position-to='window' data-transition='pop'>";
+						echo "<h3>".$row3["email"]."</h3>";
+						echo "</a></li>";
+					}
+				}			
+			?>
+		
+<!--		
+			<li><a href="#message" data-rel="popup" data-position-to="window" data-transition="pop">				
 					<h3>Kobe Bryant</h3>
 			</a></li>
 			<li><a href="#message" data-rel="popup" data-position-to="window" data-transition="pop">
-					<!-- <img src="http://supost.com/uploads/post/115358a" /> -->
 					<h3>Tom Cruise</h3>
 			</a></li>
-			<li><a href="#message" data-rel="popup" data-position-to="window" data-transition="pop">
-					<!-- <img src="http://supost.com/uploads/post/115358a" /> -->
-					<h3>Pau Gasol</h3>
-			</a></li>
-			<li><a href="#message" data-rel="popup" data-position-to="window" data-transition="pop">
-					<!-- <img src="http://supost.com/uploads/post/115358a" /> -->
-					<h3>Dwight Howard</h3>
-			</a></li>
-			<li><a href="#message" data-rel="popup" data-position-to="window" data-transition="pop">
-					<!-- <img src="http://supost.com/uploads/post/115358a" /> -->
-					<h3>Steve Nash</h3>
-			</a></li>
-			<li><a href="#message" data-rel="popup" data-position-to="window" data-transition="pop">
-					<!-- <img src="http://supost.com/uploads/post/115358a" /> -->
-					<h3>Luke Walton</h3>
-			</a></li>
+-->
 
 		</ul>
 
 		<div data-role="popup" id="message" data-theme="d" data-overlay-theme="b" class="ui-content" style="max-width:340px;">
 			<label for="textarea-a">Message Person#:</label>
-			<textarea name="textarea" id="textarea-a">Hi Person, buy this book from me!!!
+			<textarea name="textarea" id="textarea-a">Hi Person, whatup?
 			</textarea>
 			<a href="buyerPageList.php" data-role="button" data-rel="popup" data-theme="b" data-icon="check" data-inline="true" data-mini="true" data-transition="pop">Send</a>
 			<a href="buyerPageList.php" data-role="button" data-rel="back" data-inline="true" data-mini="true">Cancel</a>	
@@ -108,13 +136,13 @@
 		
 
 
-	<div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
-		<div data-role="navbar" class="nav-glyphish-example" data-grid="c">
+	<div data-role="footer" data-id="samebar" data-position="fixed" data-tap-toggle="false">
+		<div data-role="navbar" data-grid="b">
 		<ul>
-			<li><a href="profile.php" id="home" data-icon="custom">Profile</a></li>
-			<li><a href="buyerPage.php" id="key" data-icon="custom">Buy</a></li>
-			<li><a href="sellerPage.php" id="beer" data-icon="custom" class="ui-btn-active">Sell</a></li>
-			<li><a href="messages.php" id="skull" data-icon="custom">Messages</a></li>
+			<li><a href="profile.php">Profile</a></li>
+			<li><a href="buyerPage.php">Buy</a></li>
+			<li><a href="sellerPage.php" class="ui-btn-active">Sell</a></li>
+			<!--<li><a href="messages.php" id="skull" data-icon="custom">Messages</a></li> -->
 		</ul>
 		</div>
 	</div> <!-- footer -->

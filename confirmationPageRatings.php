@@ -22,13 +22,13 @@
 <div data-role="page" id="page1">
     <div data-theme="a" data-role="header">
         <h3>
-            Add Complete
+            Rating Complete
         </h3>
     </div>
     <div data-role="content">
-        <a data-role="button" data-theme="e" href="sellerPage.html"
+        <a data-role="button" data-theme="e" href="profile.php"
         data-icon="check" data-iconpos="left">
-            Return to Sell Page
+            Return to Profile
         </a>
     </div>
 </div>

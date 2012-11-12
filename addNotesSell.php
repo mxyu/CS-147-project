@@ -21,12 +21,12 @@
 <div data-role="page" id="filter">
 
 	<div data-role="header">
-		<a href="sellerPage.html" data-icon="delete">Back</a>
+		<a href="sellerPage.php" data-icon="delete">Back</a>
 		<h1>Add Notes</h1>
 
 	</div><!-- /header -->
 
-  <form action="confirmationPageAddSellItem.html" method="post">
+  <form action="confirmationPageAddSellItem.php" method="post">
 
 	<p>Select Department:<p>
 	<select>
@@ -61,16 +61,16 @@
 
   </form>
 
-	<div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
-		<div data-role="navbar" class="nav-glyphish-example" data-grid="c">
+	<div data-role="footer" data-id="samebar" data-position="fixed" data-tap-toggle="false">
+		<div data-role="navbar" data-grid="b">
 		<ul>
-			<li><a href="profile.html" id="home" data-icon="custom">Profile</a></li>
-			<li><a href="buyerPage.html" id="key" data-icon="custom">Buy</a></li>
-			<li><a href="sellerPage.html" id="beer" data-icon="custom" class="ui-btn-active">Sell</a></li>
-			<li><a href="messages.html" id="skull" data-icon="custom">Messages</a></li>
+			<li><a href="profile.php">Profile</a></li>
+			<li><a href="buyerPage.php">Buy</a></li>
+			<li><a href="sellerPage.php" class="ui-btn-active">Sell</a></li>
+			<!--<li><a href="messages.php" id="skull" data-icon="custom">Messages</a></li> -->
 		</ul>
 		</div>
-	</div>
+	</div> <!-- footer -->
 	
 
 </div><!-- /page -->

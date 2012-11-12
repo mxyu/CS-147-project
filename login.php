@@ -35,27 +35,29 @@
 <div data-role="page" id="filter">
 
 	<div data-role="header">
+	
 		<h1>Sign In</h1>
-		<a href="index.html" data-icon="check">Sign Up</a>
+		<a href="index.html" >Sign Up</a>
 
 	</div><!-- /header -->
 
-
-  <h2>Sign in</h2>
+	<div class="input-wrapper">
+	  <h2>Sign in</h2>
+	</div>
 	<div class="body">
 	  <form action="submitLogin.php" method="post" data-ajax="false">
 		<fieldset class="inputs">
-		  <label>Email</label>
 		  <div class="input-wrapper">
 			<input class="search-query span2"  type="text" id="emailaddress" name="emailaddress" placeholder="Email">
 		  </div>
 	<!--       <div class="hint">You can also use your email address</div>-->
-		  <label>Password</label>
 		  <div class="input-wrapper">
 			<input class="search-query span2"  type="password" id="password" name="password" placeholder="Password">
 		  </div>
 		</fieldset>
+		<div style="margin-left: 10px; margin-right: 10px;">
 			<button type="submit" name="submit"  class="btn btn-primary" style="margin-left:5px;">Log in</button>
+		</div>
 	  </form>
 	</div>
 

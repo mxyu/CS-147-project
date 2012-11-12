@@ -9,12 +9,11 @@
 		}
 	}
 	
-	if (isset($_SESSION['userid'])) {
-		header("Location: home.php");
+	if (!isset($_SESSION['userid'])) {
+		header("Location: login.php");
 		exit();
 	}
 ?>
-
 
 <!DOCTYPE html> 
 <html>
@@ -41,39 +40,60 @@
 
 	<div data-role="header">
 		<h1>Your Profile</h1>
-		<a href="index.html" data-icon="check">Logout</a>
+		<a href="logout.php" data-icon="back">Logout</a>
+		<a href="editProfile.php" >Edit</a>
 
 	</div><!-- /header -->
 
 <table class="tweet">
   <tr class="tweet-header">
-        <td  class="avatar" rowspan="3">
-          <a href=""><img alt="Kevin Chiu" src="https://si0.twimg.com/profile_images/2517075043/image_bigger.jpg"/></a>
-        </td>
+
+  	  
       <td class="user-info">
-          <h2>Harry Potter</h2>
+    	<?php
+			require_once('connectvars.php');
+
+			$dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+
+			$userid = $_SESSION['userid'];
+			$query = "SELECT * FROM users WHERE id = '$userid'";
+			$result = mysqli_query($dbc, $query);
+
+		//now we need to loop through each book and find all the matching sellers for each book			
+			while ($row = mysqli_fetch_assoc($result)) {
+	    		echo "<h2>Full name: ".$row["full_name"]."</h2>";
+	    	}
+    	?>
       </td>
   </tr>
   <tr class="tweet-container">
     <td colspan="2" class="tweet-content">
-      <div class="tweet-text">Email: hp@gryffindor.edu</div>
+    	<?php
+    		$result = mysqli_query($dbc, $query);
+    		while ($row = mysqli_fetch_assoc($result)) {
+	    		// echo "<p>Gender: ".$row["gender"]."</p>";
+	    		echo "<p>Email: ".$row["email"]."</p>";
+	    		echo "<p>Phone Number: ".$row["phone_number"]."</p>";
+	    	}
+    	?>
 
     </td>
   </tr>
   <tr>
     <td colspan="2" class="meta-and-actions">
       <span class="metadata">
-      <div class="tweet-text">Rating: 5/5 stars</div>
+      <!--<div class="tweet-text">Rating: 5/5 stars</div> -->
     </td>
   </tr>
     <tr>
     <td colspan="2" class="meta-and-actions">
       <span class="metadata">
-		<a href="#popupBasic" data-rel="popup">You Have 2 People to Rate!</a>
+		<!--<a href="#popupBasic" data-rel="popup">You Have 2 People to Rate!</a> 
 		<div data-role="popup" id="popupBasic">
 				<h1><a href="rateUser.html" data-icon="check">Rate Marshall Mathers</a></h1>
 				<h1><a href="rateUser.html" data-icon="check">Rate Kim Kardashian</a></h1>
 		</div>
+		-->
     </td>
   </tr>
   
@@ -81,16 +101,18 @@
   <p> Add books/notes you're looking to buy in the Buy section and books/notes you're looking to sell in the Sell section.</p>
   <p>  Then immediately see which students fill your need and directly message them right away!</p>
 
-	<div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
-		<div data-role="navbar" class="nav-glyphish-example" data-grid="c">
+
+
+	<div data-role="footer" data-id="samebar" data-position="fixed" data-tap-toggle="false">
+		<div data-role="navbar" data-grid="b">
 		<ul>
-			<li><a href="profile.html" id="home" data-icon="custom" class="ui-btn-active">Profile</a></li>
-			<li><a href="buyerPage.html" id="key" data-icon="custom">Buy</a></li>
-			<li><a href="sellerPage.html" id="beer" data-icon="custom">Sell</a></li>
-			<li><a href="messages.html" id="skull" data-icon="custom">Messages</a></li>
+			<li><a href="profile.php" class="ui-btn-active">Profile</a></li>
+			<li><a href="buyerPage.php">Buy</a></li>
+			<li><a href="sellerPage.php">Sell</a></li>
+			<!--<li><a href="messages.php" id="skull" data-icon="custom">Messages</a></li> -->
 		</ul>
 		</div>
-	</div>
+	</div> <!-- footer -->
 	
 
 </div><!-- /page -->

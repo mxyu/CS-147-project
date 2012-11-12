@@ -1,3 +1,20 @@
+<?php
+
+	session_start();
+	
+	// If the session vars aren't set, try to set them with a cookie.
+	if (!isset($_SESSION['userid'])) {
+		if (isset($_COOKIE['userid'])) {
+			$_SESSION['userid'] = $_COOKIE['userid'];
+		}
+	}
+	
+	if (!isset($_SESSION['userid'])) {
+		header("Location: login.php");
+		exit();
+	}
+?>
+
 <!DOCTYPE html> 
 <html>
 
@@ -27,13 +44,13 @@
     </div>
     <h4>Are you sure  you want to delete this book from your list?</h4>
     <div data-role="content">
-        <a data-role="button" data-theme="e" href="sellerPage.html"
+        <a data-role="button" data-theme="e" href="buyerPage.php"
         data-icon="check" data-iconpos="left">
             Delete
         </a>
     </div>
     <div data-role="content">
-        <a data-role="button" data-theme="e" href="sellerPage.html"
+        <a data-role="button" data-theme="e" href="buyerPage.php"
         data-icon="check" data-iconpos="left">
             Cancel
         </a>

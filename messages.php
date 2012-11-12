@@ -44,8 +44,8 @@
     </td>
   </tr>
   <tr>
-        <td><a href="viewConversation.html">Reply</a></td>
-		<td><a href="deletePageMessages.html" >Delete</a></td>
+        <td><a href="viewConversation.php">Reply</a></td>
+		<td><a href="deletePageMessages.php" >Delete</a></td>
   </tr>
 </table>
 
@@ -65,8 +65,8 @@
     </td>
   </tr>
   <tr>
-        <td><a href="viewConversation.html">Reply</a></td>
-		<td><a href="deletePageMessages.html" >Delete</a></td>
+        <td><a href="viewConversation.php">Reply</a></td>
+		<td><a href="deletePageMessages.php" >Delete</a></td>
   </tr>
 </table>
 
@@ -75,10 +75,10 @@
 	<div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
 		<div data-role="navbar" class="nav-glyphish-example" data-grid="c">
 		<ul>
-			<li><a href="profile.html" id="home" data-icon="custom">Profile</a></li>
-			<li><a href="buyerPage.html" id="key" data-icon="custom">Buy</a></li>
-			<li><a href="sellerPage.html" id="beer" data-icon="custom">Sell</a></li>
-			<li><a href="messages.html" id="skull" data-icon="custom" class="ui-btn-active">Messages</a></li>
+			<li><a href="profile.php" id="home" data-icon="custom">Profile</a></li>
+			<li><a href="buyerPage.php" id="key" data-icon="custom">Buy</a></li>
+			<li><a href="sellerPage.php" id="beer" data-icon="custom">Sell</a></li>
+			<li><a href="messages.php" id="skull" data-icon="custom" class="ui-btn-active">Messages</a></li>
 		</ul>
 		</div>
 	</div>

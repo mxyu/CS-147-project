@@ -1,10 +1,10 @@
 		.nav-glyphish-example .ui-btn .ui-btn-inner { padding-top: 40px !important; }
 		.nav-glyphish-example .ui-btn .ui-icon {color:red; width: 30px!important; height: 30px!important; margin-left: -15px !important; box-shadow: none!important; -moz-box-shadow: none!important; -webkit-box-shadow: none!important; -webkit-border-radius: 0 !important; border-radius: 0 !important; }
-		#home .ui-icon { background:  url(glyphish-icons/53-house.png) 50% 50% no-repeat; background-size: 24px 22px; }
-		#key .ui-icon { background: url(glyphish-icons/30-key.png) 50% 50% no-repeat; background-size: 12px 26px; }
+		#home .ui-icon { background:  url(glyphish-icons/111-user@2x.png) 50% 50% no-repeat; background-size: 20px 17px; }
+		#key .ui-icon { background: url(glyphish-icons/80-shopping-cart@2x.png) 50% 50% no-repeat; background-size: 21px 17px; }
 		#email .ui-icon { background:  url(glyphish-icons/18-envelope.png) 50% 50% no-repeat; background-size: 24px 16px;  }
 		#login .ui-icon { background:  url(glyphish-icons/30-key.png) 50% 50% no-repeat;  background-size: 12px 26px; }
-		#beer .ui-icon { background:  url(glyphish-icons/88-beermug.png) 50% 50% no-repeat;  background-size: 22px 27px; }
+		#beer .ui-icon { background:  url(glyphish-icons/15-tags@2x.png) 50% 50% no-repeat;  background-size: 17px 18px; }
 		#coffee .ui-icon { background:  url(glyphish-icons/100-coffee.png) 50% 50% no-repeat;  background-size: 20px 24px; }
 		#skull .ui-icon { background:  url(glyphish-icons/21-skull.png) 50% 50% no-repeat;  background-size: 22px 24px; }
 		a:-webkit-any-link{
@@ -13,4 +13,9 @@
 		a:-webkit-any-link:active, hover{
 			text-decoration: underline;
 			color: red;
+		}
+		
+		.input-wrapper{
+			margin-left: 10px;
+			width: 1500px;
 		}

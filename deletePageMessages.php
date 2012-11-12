@@ -22,18 +22,18 @@
 <div data-role="page" id="page1">
     <div data-theme="a" data-role="header">
         <h3>
-            Delete Book
+            Delete Conversation
         </h3>
     </div>
-    <h4>Are you sure  you want to delete this book from your list?</h4>
+    <h4>Are you sure  you want to delete this conversation?</h4>
     <div data-role="content">
-        <a data-role="button" data-theme="e" href="buyerPage.html"
+        <a data-role="button" data-theme="e" href="messages.php"
         data-icon="check" data-iconpos="left">
             Delete
         </a>
     </div>
     <div data-role="content">
-        <a data-role="button" data-theme="e" href="buyerPage.html"
+        <a data-role="button" data-theme="e" href="messages.php"
         data-icon="check" data-iconpos="left">
             Cancel
         </a>
