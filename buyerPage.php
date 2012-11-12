@@ -51,7 +51,7 @@
 
 	<div data-role="header">
 		<h1>Buy</h1>
-		<a href="addBookBuy.php" class="ui-btn-right">Edit</a>
+		<a href="addBookBuy.php" class="ui-btn-right edit-btn">Edit</a>
 
 
 
@@ -134,9 +134,21 @@
 			}
 
 			//empty page? Get started here!
-			// if($empty) {
-			// 	echo ("<img src='images/getstarted.png' />");
-			// }
+			if($empty) {
+				echo "<style>
+				.ui-body-c{  
+					background: -webkit-linear-gradient(top, #f9f9f9, #f9f9f9);
+					background: -moz-linear-gradient(top, #f9f9f9, #f9f9f9);
+				}
+				#nobooks {
+					font-family: HelveticaNeue;
+					font-weight: bold;
+					font-size: 24px;
+				}
+				</style>";
+				echo "<img style='position: absolute; left: 60px;' width='180px' src='images/getstarted-sm.png' />
+				<div id='nobooks' style='position: absolute; left: 50px; top: 260px;'>You have no books <br>in your buy list.</div>";
+			}
 
 
 
@@ -154,7 +166,7 @@
 		<div data-role="navbar" data-grid="b">
 		<ul>
 			<li><a href="profile.php">Profile</a></li>
-			<li><a href="buyerPage.php" class="ui-btn-active">Buy</a></li>
+			<li><a href="buyerPage.php" class="ui-btn-active ui-state-persist">Buy</a></li>
 			<li><a href="sellerPage.php">Sell</a></li>
 			<!--<li><a href="messages.php" id="skull" data-icon="custom">Messages</a></li> -->
 		</ul>

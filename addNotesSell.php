@@ -66,7 +66,7 @@
 		<ul>
 			<li><a href="profile.php">Profile</a></li>
 			<li><a href="buyerPage.php">Buy</a></li>
-			<li><a href="sellerPage.php" class="ui-btn-active">Sell</a></li>
+			<li><a href="sellerPage.php" class="ui-btn-active ui-state-persist">Sell</a></li>
 			<!--<li><a href="messages.php" id="skull" data-icon="custom">Messages</a></li> -->
 		</ul>
 		</div>

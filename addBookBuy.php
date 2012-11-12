@@ -82,7 +82,7 @@
 		<div data-role="navbar" data-grid="b">
 		<ul>
 			<li><a href="profile.php">Profile</a></li>
-			<li><a href="buyerPage.php" class="ui-btn-active">Buy</a></li>
+			<li><a href="buyerPage.php" class="ui-btn-active ui-state-persist">Buy</a></li>
 			<li><a href="sellerPage.php">Sell</a></li>
 			<!--<li><a href="messages.php" id="skull" data-icon="custom">Messages</a></li> -->
 		</ul>
