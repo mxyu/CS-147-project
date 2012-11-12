@@ -1,0 +1,93 @@
+<!DOCTYPE html> 
+<html>
+
+<head>
+	<title>BookNotes</title> 
+	<meta charset="utf-8">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+ 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+	<link rel="stylesheet" href="jquery.mobile-1.2.0.css" />
+	<link rel="stylesheet" href="style.css" />
+	<link rel="apple-touch-icon" href="appicon.png" />
+	<link rel="apple-touch-startup-image" href="startup.png">
+	
+	<script src="jquery-1.8.2.min.js"></script>
+	<script src="jquery.mobile-1.2.0.js"></script>
+
+<script>
+	function validateForm(){
+		var x=document.forms["signup"]["emailaddress"].value;
+		var atpos=x.indexOf("@");
+		var dotpos=x.lastIndexOf(".");
+		if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length){
+			  alert("Not a valid e-mail address");
+			  return false;
+		}
+		var entered_password1 = document.forms["signup"]["password1"].value;
+		var entered_password2 = document.forms["signup"]["password2"].value;
+		if(entered_password1 != entered_password2){
+			  alert("Passwords entered not the same.");
+			  return false;
+		}
+		if(entered_password1.length < 6){
+			  alert("Password is not long enough (min 6 characters).");
+			  return false;		
+		}
+	}
+</script>
+
+
+</head> 
+<body> 
+
+<div data-role="page" id="filter">
+
+
+
+	<div data-role="header">
+		<h1>BOOKNOTES</h1>
+
+	</div><!-- /header -->
+
+    <div class="input-wrapper">
+	  <h2>Sign up</h2>
+	  <div class="hint">
+		Already have an account? <a href="login.php">Sign in</a>
+	  </div>
+	</div>
+	<form method="post" action="signup.php" name="signup" data-ajax="false" onsubmit="return validateForm();" >
+      <div class="email ">
+        <div class="input-wrapper">
+            <input autocomplete="off" type="text"  id="emailaddress" name="emailaddress" placeholder="Email" style="margin-top:5px;" />
+        </div>
+      </div>
+      <div class="password ">
+        <div class="input-wrapper">
+            <input autocomplete="off" class="crosschecker" type="password" id="password1" name="password1" placeholder="Password" style="margin-top:5px;" />
+        </div>
+	  </div>
+      <div class="password ">
+        <div class="input-wrapper">
+             <input  class="crosschecked" type="password" id="password2" name="password2" placeholder="Confirm Password" style="margin-top:5px;" />
+        </div>
+	  </div>
+		<div style="margin-left: 10px; margin-right: 10px;">
+			<button type="submit"  name="submit" class="btn btn-primary" style="margin-top:10px;">Sign  up</button>
+		</div>
+	</form>
+
+	<div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
+		<div data-role="navbar" class="nav-glyphish-example" data-grid="c">
+		<ul>
+		</ul>
+		</div>
+	</div>
+	
+
+</div><!-- /page -->
+
+
+</body>
+</html>
