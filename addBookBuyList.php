@@ -5,7 +5,7 @@
 
 <html>
 <head>
-	<title>Books and Notes App</title> 
+	<title>Bookly</title> 
 	<meta name="apple-mobile-web-app-capable" content="yes">
  	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
@@ -45,8 +45,8 @@ $(document).bind('pageinit', function() {
 
 	<div data-role="header">
 		<h1>Find Your Books</h1>
-		<a href="addBookBuy.php" data-icon="back">Back</a>
-		<a class="doneButton" href="#" data-icon="check">Done</a>
+		<a href="addBookBuy.php" data-icon="back" data-direction='reverse' data-transition='slide' id="left-action-btn">Back</a>
+		<a class="doneButton" href="#" data-icon="check" id="edit-btn">Done</a>
 	</div><!-- /header -->
 		<?php
 			echo $_SESSION['userid'];	

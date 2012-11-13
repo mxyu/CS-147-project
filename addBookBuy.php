@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>Books and Notes App</title> 
+	<title>Bookly</title> 
 	<meta name="apple-mobile-web-app-capable" content="yes">
  	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
@@ -22,7 +22,7 @@
 
 	<div data-role="header">
 		<h1>Find Your Books</h1>
-		<a href="buyerPage.php" data-icon="back">Back</a>
+		<a href="buyerPage.php" data-icon="back" id="left-action-btn">Back</a>
 
 	</div><!-- /header -->
 		<?php
@@ -41,7 +41,7 @@
 				$query = "SELECT * FROM courses ORDER BY course_number ASC";
 				$result = mysql_query($query);
 				while ($row = mysql_fetch_assoc($result)) {
-					echo "<li><a href=addBookBuyList.php?courseid=".$row["course_id"].">".$row["course_number"]."</a></li>";
+					echo "<li><a data-transition='slide' href=addBookBuyList.php?courseid=".$row["course_id"].">".$row["course_number"]."</a></li>";
 				}
 				?>
 			</ul>

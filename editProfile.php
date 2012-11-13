@@ -19,7 +19,7 @@
 <html>
 
 <head>
-	<title>Books and Notes App</title> 
+	<title>Bookly</title> 
 	<meta charset="utf-8">
 	<meta name="apple-mobile-web-app-capable" content="yes">
  	<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -40,14 +40,14 @@
 
 	<div data-role="header">
 		<h1>Edit Profile</h1>
-		<a href="profile.php" data-icon="back">Back</a>
+		<a href="profile.php" id="left-action-btn">Cancel</a>
 
 	</div><!-- /header -->
 
-<table class="tweet">
+<!-- <table class="tweet">
   <tr class="tweet-header">
 
-  	  
+      
   </tr>
   <tr class="tweet-container">
     <td colspan="2" class="tweet-content">
@@ -58,25 +58,22 @@
   <tr>
     <td colspan="2" class="meta-and-actions">
       <span class="metadata">
-      <!--<div class="tweet-text">Rating: 5/5 stars</div> -->
+      <div class="tweet-text">Rating: 5/5 stars</div> 
     </td>
   </tr>
     <tr>
     <td colspan="2" class="meta-and-actions">
       <span class="metadata">
-		<!--<a href="#popupBasic" data-rel="popup">You Have 2 People to Rate!</a> 
-		<div data-role="popup" id="popupBasic">
-				<h1><a href="rateUser.html" data-icon="check">Rate Marshall Mathers</a></h1>
-				<h1><a href="rateUser.html" data-icon="check">Rate Kim Kardashian</a></h1>
-		</div>
-		-->
     </td>
   </tr>
   
-</table>
+</table> -->
+
+<div data-role="content">
+
 	<form method="post" action="edit2.php" name="editProfilePage" data-ajax="false">
-		<div class="fullname input-wrapper">
-			<label>Full Name:</label>
+		<div class="fullname input-wrapper" style="margin-top: 0px;">
+			<span class="prof-block"><label><b> Name:</b></label></span>
 		<?php
 			require_once('connectvars.php');
 			$dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
@@ -84,30 +81,24 @@
 			$query = "SELECT * FROM users WHERE id = '$userid'";
     		$result = mysqli_query($dbc, $query);
     		while ($row = mysqli_fetch_assoc($result)) {
-    			echo "<input autocomplete='off' type='text'  id='fullname' name='fullname' style='margin-top:5px;' value='".$row["full_name"]."'/>";
-	    		echo "<p>Email: ".$row["email"]."</p>";
+    			echo "<input autocomplete='off' type='text' data-mini='true' id='fullname' name='fullname' style='width: 60%; margin-top: 0px; margin-bottom: 0px;' value='".$row["full_name"]."'/>";
+	    		echo "</div><hr><div class='input-wrapper'><span class='prof-block'><b>Email:</b></span> ".$row["email"]."</div>";
 	    	}
     	?>	
-			
-		</div>
-	
-		<div class="input-wrapper">
-			<legend>Gender:</legend>
-			  <div data-role="fieldcontain">
-				<fieldset data-role="controlgroup">
+	  <!-- <hr>
+		<div class="input-wrapper">		  
+			<span class="prof-block"><label><b>Gender:</b></label></span>
+				<fieldset id="gender" data-role="controlgroup" data-type="horizontal" data-mini="true" style="margin: 0px 0px;">
 					<input type="radio" name="gender" id="radio-choice-1" value="m" />
 					<label for="radio-choice-1">Male</label>
-		
 					<input type="radio" name="gender" id="radio-choice-2" value="f"  />
 					<label for="radio-choice-2">Female</label>	
-			</fieldset>
-			</div>
-		</div>
-			 
-		 
+			  </fieldset>
+		</div> -->
+		<hr>
 			 
 		<div class="phonenumber input-wrapper">
-			<label>Phone Number:</label>
+			<span class="prof-block"><label><b>Phone:</b></label></span>
 		<?php
 			require_once('connectvars.php');
 			$dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
@@ -115,26 +106,28 @@
 			$query = "SELECT * FROM users WHERE id = '$userid'";
     		$result = mysqli_query($dbc, $query);
     		while ($row = mysqli_fetch_assoc($result)) {
-    			echo "<input autocomplete='off' type='text'  id='phonenumber' name='phonenumber' style='margin-top:5px;' value='".$row["phone_number"]."'/>";
+    			echo "<input data-mini='true' autocomplete='off' type='text'  id='phonenumber' name='phonenumber' style='margin-top: 0px; margin-bottom: 0px; width: 60%;' value='".$row["phone_number"]."'/>";
 	    	}
     	?>	
-		</div>
+		</div><hr>
 	
 		<div class="input-wrapper">
 			<button type="submit"  name="submit" class="btn btn-primary" style="margin-left: 10px; margin-right: 10px;">Update Profile Information</button>
 		</div>
 	</form>
+	
+</div>
 
-	<div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
-		<div data-role="navbar" class="nav-glyphish-example" data-grid="b">
+	<div data-role="footer" data-id="samebar" data-position="fixed" data-tap-toggle="false">
+		<div data-role="navbar" data-grid="b">
 		<ul>
-			<li><a href="profile.php" id="home" data-icon="custom" class="ui-btn-active">Profile</a></li>
-			<li><a href="buyerPage.php" id="key" data-icon="custom">Buy</a></li>
-			<li><a href="sellerPage.php" id="beer" data-icon="custom">Sell</a></li>
+			<li><a href="profile.php" class="ui-btn-active ui-state-persist">Profile</a></li>
+			<li><a href="buyerPage.php">Buy</a></li>
+			<li><a href="sellerPage.php">Sell</a></li>
 			<!--<li><a href="messages.php" id="skull" data-icon="custom">Messages</a></li> -->
 		</ul>
 		</div>
-	</div>
+	</div> <!-- footer -->
 	
 
 </div><!-- /page -->

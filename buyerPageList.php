@@ -20,7 +20,7 @@
 <html>
 
 <head>
-	<title>Books and Notes App</title> 
+	<title>Bookly</title> 
 	<meta charset="utf-8">
 	<meta name="apple-mobile-web-app-capable" content="yes">
  	<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -50,7 +50,7 @@
 				echo "<h1>Who is selling ".$textbook_name."?</h1>";
 			}		
 		?>
-		<a href="buyerPage.php" data-icon="back">Back</a>
+		<a href="buyerPage.php" data-direction="reverse" data-transition="slide" data-icon="back" id="left-action-btn">Back</a>
 
 	</div><!-- /header -->
 	
@@ -100,14 +100,15 @@
 
 		</ul>
 		<div data-role="popup" id="message" data-theme="d" data-overlay-theme="b" class="ui-content" style="max-width:340px;">
-			<label for="textarea-a">Message Person#:</label>
+			<label for="textarea-a"><b>Message Person:</b></label>
 			<?php
 				echo "";
 			?>
-			<textarea name="textarea" id="textarea-a">Hi Person#, I'm interested in purchasing Current Book from you!
+			<textarea style="margin-bottom:15px;" name="textarea" id="textarea-a">Hi Person, I'm interested in purchasing Current Book from you!
 			</textarea>
-			<a href="buyerPageList.php" data-role="button" data-rel="popup" data-theme="b" data-icon="check" data-inline="true" data-mini="true" data-transition="pop">Send</a>
-			<a href="buyerPageList.php" data-role="button" data-rel="back" data-inline="true" data-mini="true">Cancel</a>	
+			<a href="buyerPageList.php" style="width: 41%" data-role="button" data-rel="back" data-inline="true" data-mini="true">Cancel</a>	
+			<a href="buyerPageList.php" style="width: 41%; float: right;" data-role="button" data-rel="popup" data-theme="b" data-inline="true" data-mini="true" data-transition="pop">Send</a>
+
 		</div><!-- popup message -->
 
 		<!-- <div data-role="popup" id="message-sent" data-theme="d" data-overlay-theme="b" class="ui-content" style="max-width:340px;">

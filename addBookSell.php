@@ -19,7 +19,7 @@
 <html>
 
 <head>
-	<title>Books and Notes App</title> 
+	<title>Bookly</title> 
 	<meta name="apple-mobile-web-app-capable" content="yes">
  	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
@@ -36,55 +36,55 @@
 <body> 
 
 <div data-role="page" id="filter">
-
 	<div data-role="header">
-		<a href="sellerPage.php" data-icon="back">Back</a>
+		<a href="sellerPage.php" data-icon="back" id="left-action-btn">Back</a>
 		<h1>Add Book To Sell</h1>
 
 	</div><!-- /header -->
-
+<div data-role="content">
   <form action="confirmationPageAddSellItem.php" method="post" data-ajax="false">
 
-	<p>Select Department:<p>
-	<select>
+	Select Department:
+	<select data-mini="true">
 	  <option>CS</option>
 	  <option>ECON</option>
 	  <option>CME</option>
-	</select>
+	</select><hr>
 	
-	<p>Select Course Number:<p>
-	<select>
+	Select Course Number:
+	<select data-mini="true">
 	  <option>147</option>
 	  <option>1A</option>
 	  <option>102</option>
-	</select>
+	</select><hr>
 	
 	<label for="books">Select Book:</label>
-		<select name="books">
+		<select name="books" data-mini="true">
 		<?php
 		include("config.php");
 		$query = "SELECT * FROM textbooks";
 		$result = mysql_query($query);
 		while ($row = mysql_fetch_assoc($result)) {
-		
 			echo "<option value='".$row["id"]."'>".$row["author"]." - ".$row["title"]."</option>";
 		
 		}
 		?>
-	</select>
+	</select><hr>
 
-	<label_for = "price">Price:</label>$
-	<input name="price" type="number" id="amount" size=1px data-mini="true"/>
-	<select name="neg">
-	  <option value="nonneg">Price Nonnegotiable</option>
-	  <option value="neg">Price Negotiable</option>
-	</select>
+	<label for = "price">Price:</label>
+	<input name="price" id="amount" data-mini="true"/>
+  <select name="neg" data-mini="true">
+    <option value="nonneg">Price is not negotiable</option>
+    <option value="neg">Price is negotiable</option>
+  </select><hr>
 
 
     <span class="w-button-common w-button-bright"><input name="commit" type="submit" value="Finish Adding Book" /></span>
 
   </form>
-
+  
+  </div>
+  
 	<div data-role="footer" data-id="samebar" data-position="fixed" data-tap-toggle="false">
 		<div data-role="navbar" data-grid="b">
 		<ul>

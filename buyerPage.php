@@ -21,7 +21,7 @@
 <html>
 
 <head>
-	<title>Books and Notes App</title> 
+	<title>Bookly</title> 
 	<meta charset="utf-8">
 	<meta name="apple-mobile-web-app-capable" content="yes">
  	<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -51,7 +51,7 @@
 
 	<div data-role="header">
 		<h1>Buy</h1>
-		<a href="addBookBuy.php" class="ui-btn-right edit-btn">Edit</a>
+		<a href="addBookBuy.php" class="ui-btn-right" id="edit-btn">Edit</a>
 
 
 
@@ -64,7 +64,6 @@
 	if ($selected) {
 		$addedbooks = explode("-", $selected);
 	}
-
 
 ?>
 
@@ -128,7 +127,7 @@
 					$query_bname = "SELECT * FROM textbooks WHERE id = $textbook_id";
 					$result_bname = mysqli_query($dbc, $query_bname);
 					while ($row = mysqli_fetch_assoc($result_bname)){
-						echo("<li><a href=\"buyerPageList.php?textbook_id=".$textbook_id."\"><h3>".$row["title"]."</h3><p>".$row["author"]."</p></a></li>");
+						echo("<li><a data-transition='slide' href=\"buyerPageList.php?textbook_id=".$textbook_id."\"><h3>".$row["title"]."</h3><p>".$row["author"]."</p></a></li>");
 					}
 				}
 			}
@@ -141,7 +140,7 @@
 					background: -moz-linear-gradient(top, #f9f9f9, #f9f9f9);
 				}
 				#nobooks {
-					font-family: HelveticaNeue;
+					font-family: HelveticaNeue, Helvetica;
 					font-weight: bold;
 					font-size: 24px;
 				}
@@ -149,8 +148,6 @@
 				echo "<img style='position: absolute; left: 60px;' width='180px' src='images/getstarted-sm.png' />
 				<div id='nobooks' style='position: absolute; left: 50px; top: 260px;'>You have no books <br>in your buy list.</div>";
 			}
-
-
 
 			//find the book that matches the textbook(trade_object) id to print the name of the book
 			//while loop shouldn't be necessary here since there should only be 1 result (textbook ids are unique)
