@@ -19,7 +19,7 @@
 <html>
 
 <head>
-	<title>Books and Notes App</title> 
+	<title>Bookly</title> 
 	<meta charset="utf-8">
 	<meta name="apple-mobile-web-app-capable" content="yes">
  	<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -39,49 +39,46 @@
 
 	<div data-role="header">
 		<h1>Sell</h1>
-		<a href="addBookSell.php" class="ui-btn-right">Edit</a>
-
-
-
+		<a href="addBookSell.php" class="ui-btn-right" id="edit-btn">Edit</a>
 	</div><!-- /header -->
 	
 
 	<div data-role="content">
 		<div class="content-primary">	
-		<a href="addBookSell.php" data-role="button" style="margin-top:-5px;  margin-bottom:25px;">Add books</a>													
+		<a href="addBookSell.php" data-role="button" style="margin-top:-5px;  margin-bottom:25px;">Add books</a>
 			<!-- <ul data-role="listview" data-theme="d" data-divider-theme="d">
 			
 				<?php
-					require_once('connectvars.php');		
-					$dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);		
-					//same as above, except just switch all the "buying" with "selling" and vice versa
-					$userid = $_SESSION['userid'];
-					$query = "SELECT * FROM user_trade_objects WHERE selling = 1 AND user_id = '$userid'";
-					$result = mysqli_query($dbc, $query);
-					while ($row = mysqli_fetch_assoc($result)) {
-						$textbook_id = $row["trade_object_id"];
-						$price = $row["price"];
-						$negotiable = $row["negotiable"];
-						$query4 = "SELECT * FROM textbooks WHERE id = '$textbook_id'";
-						$result4 = mysqli_query($dbc, $query4);
-						while ($row4 = mysqli_fetch_assoc($result4)) {
-							$textbook_name = $row4["title"];
-							$author = $row4["author"];
-							$id = $row4["id"];
-							echo "<li><a href='sellerPageList.php?textbook_id=";
-							echo $id;
-							echo "'>";
-							echo "<h3>".$textbook_name." by ".$author."</h3>";
-							echo "<p class=\"ui-li-aside ui-li-desc\"><strong style=\"margin-top:8px; font-size:22px;\">$".$price."</strong>";
-							if($negotiable == 1){
-								echo "<br><span style='font-size:12px'>negotiable</span></p>";
-							} else {
-								echo "<br><span style='font-size:12px'>non-negotiable</span></p>";				
-							}
-							echo "</a></li>";
-						}
-		
-					} 
+          // require_once('connectvars.php');   
+          // $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);   
+          // //same as above, except just switch all the "buying" with "selling" and vice versa
+          // $userid = $_SESSION['userid'];
+          // $query = "SELECT * FROM user_trade_objects WHERE selling = 1 AND user_id = '$userid'";
+          // $result = mysqli_query($dbc, $query);
+          // while ($row = mysqli_fetch_assoc($result)) {
+          //  $textbook_id = $row["trade_object_id"];
+          //  $price = $row["price"];
+          //  $negotiable = $row["negotiable"];
+          //  $query4 = "SELECT * FROM textbooks WHERE id = '$textbook_id'";
+          //  $result4 = mysqli_query($dbc, $query4);
+          //  while ($row4 = mysqli_fetch_assoc($result4)) {
+          //    $textbook_name = $row4["title"];
+          //    $author = $row4["author"];
+          //    $id = $row4["id"];
+          //    echo "<li><a href='sellerPageList.php?textbook_id=";
+          //    echo $id;
+          //    echo "'>";
+          //    echo "<h3>".$textbook_name." by ".$author."</h3>";
+          //    echo "<p class=\"ui-li-aside ui-li-desc\"><strong style=\"margin-top:8px; font-size:22px;\">$".$price."</strong>";
+          //    if($negotiable == 1){
+          //      echo "<br><span style='font-size:12px'>negotiable</span></p>";
+          //    } else {
+          //      echo "<br><span style='font-size:12px'>non-negotiable</span></p>";        
+          //    }
+          //    echo "</a></li>";
+          //  }
+          //    
+          // } 
 				?> -->
 
 			<ul data-role="listview" data-theme="d" data-divider-theme="d">
@@ -129,7 +126,7 @@
 						$query_bname = "SELECT * FROM textbooks WHERE id = $textbook_id";
 						$result_bname = mysqli_query($dbc, $query_bname);
 						while ($row = mysqli_fetch_assoc($result_bname)){
-							echo("<li><a href=\"sellerPageList.php?textbook_id=".$textbook_id."\"><h3>".$row["title"]."</h3><p>".$row["author"]."</p>");
+							echo("<li><a data-transition='slide'  href=\"sellerPageList.php?textbook_id=".$textbook_id."\"><h3>".$row["title"]."</h3><p>".$row["author"]."</p>");
 							
 							
 							$pquery = "SELECT * FROM user_trade_objects WHERE selling = 1 AND user_id = '$userid' AND trade_object_id = $textbook_id";
@@ -157,7 +154,7 @@
 					background: -moz-linear-gradient(top, #f9f9f9, #f9f9f9);
 				}
 				#nobooks {
-					font-family: HelveticaNeue;
+					font-family: HelveticaNeue, Helvetica;
 					font-weight: bold;
 					font-size: 24px;
 				</style>";

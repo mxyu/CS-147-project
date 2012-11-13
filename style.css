@@ -10,12 +10,23 @@
 		a:-webkit-any-link{
 			text-decoration: none;
 		}
-	/*	a:-webkit-any-link:active, hover{
-			text-decoration: none;
-			color: white;
-		}*/
 		
-		.input-wrapper{
-			margin-left: 10px;
-			width: 1500px;
+		hr {
+		  margin-top: 13px;
+		  margin-bottom: 11px; 
+		  display: block; height: 1px;
+          border: 0; border-top: 1px solid #ddd;
+          padding: 0;
 		}
+		
+		#gender {
+		  display: inline;
+		}
+		
+		.ui-radio-on {
+		  background-color: #4596ce; /* NOTE: this hex should match the active state color. It's repeated here for cascade */	
+		}
+    
+    .prof-block {
+      width: 25%; display: inline-block;
+    }

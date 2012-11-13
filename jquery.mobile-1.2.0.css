@@ -8,13 +8,41 @@
 *
 */
 
+/* Custom styles */ 
+#edit-btn {
+  margin-top: 2px;
+  background-image: -webkit-linear-gradient(top, #a10101, #690000);
+  border: 1px solid 		#111 /*{a-bup-border}*/;
+	background: 			#333 /*{a-bup-background-color}*/;
+	color: 					#fff /*{a-bup-color}*/;
+	background-image: -webkit-linear-gradient(top, #990101, #690000);
+  background-image: -webkit-linear-gradient( #990101 /*{a-bup-background-start}*/, #690000 /*{a-bup-background-end}*/); /* Chrome 10+, Saf5.1+ */
+	background-image:    -moz-linear-gradient( #990101 /*{a-bup-background-start}*/, #690000 /*{a-bup-background-end}*/); /* FF3.6 */
+	background-image:     -ms-linear-gradient( #990101 /*{a-bup-background-start}*/, #690000 /*{a-bup-background-end}*/); /* IE10 */
+	background-image:      -o-linear-gradient( #990101 /*{a-bup-background-start}*/, #690000 /*{a-bup-background-end}*/); /* Opera 11.10+ */
+	background-image:         linear-gradient( #990101 /*{a-bup-background-start}*/, #690000 /*{a-bup-background-end}*/);
+}
+
+#left-action-btn {
+  margin-top: 2px;
+  border: 1px solid 		#111 /*{a-bup-border}*/;
+	background: 			#333 /*{a-bup-background-color}*/;
+	color: 					#fff /*{a-bup-color}*/;	
+	background-image: -webkit-linear-gradient(top, #B82529, #971E22);
+  background-image: -webkit-linear-gradient( #B82529 /*{a-bup-background-start}*/, #971E22 /*{a-bup-background-end}*/); /* Chrome 10+, Saf5.1+ */
+	background-image:    -moz-linear-gradient( #B82529 /*{a-bup-background-start}*/, #971E22 /*{a-bup-background-end}*/); /* FF3.6 */
+	background-image:     -ms-linear-gradient( #B82529 /*{a-bup-background-start}*/, #971E22 /*{a-bup-background-end}*/); /* IE10 */
+	background-image:      -o-linear-gradient( #B82529 /*{a-bup-background-start}*/, #971E22 /*{a-bup-background-end}*/); /* Opera 11.10+ */
+	background-image:         linear-gradient( #B82529 /*{a-bup-background-start}*/, #971E22 /*{a-bup-background-end}*/);
+}
+
+.ui-header .ui-btn-inner, .ui-footer .ui-btn-inner, .ui-mini .ui-btn-inner {
+  padding: .4em 11px .5em;
+}
 
 /* Swatches */
 /* A
 -----------------------------------------------------------------------------------------------------------*/
-.ui-btn-right.edit-btn {
-	background-color: white;
-}
 
 .ui-bar-a {
 	border: 1px solid 		#333 /*{a-bar-border}*/;
@@ -24,7 +52,13 @@
 	text-shadow: 0 /*{a-bar-shadow-x}*/ -1px /*{a-bar-shadow-y}*/ 1px /*{a-bar-shadow-radius}*/ #000 /*{a-bar-shadow-color}*/;
 	
 	background-color: #A82226;
-	background-image: -webkit-linear-gradient(top, #B82529, #971E22);
+	background-image: -webkit-linear-gradient(top, #B82529, #821a1d);
+  background-image: -webkit-linear-gradient( #B82529 /*{a-bup-background-start}*/, #821a1d /*{a-bup-background-end}*/); /* Chrome 10+, Saf5.1+ */
+	background-image:    -moz-linear-gradient( #B82529 /*{a-bup-background-start}*/, #821a1d /*{a-bup-background-end}*/); /* FF3.6 */
+	background-image:     -ms-linear-gradient( #B82529 /*{a-bup-background-start}*/, #821a1d /*{a-bup-background-end}*/); /* IE10 */
+	background-image:      -o-linear-gradient( #B82529 /*{a-bup-background-start}*/, #821a1d /*{a-bup-background-end}*/); /* Opera 11.10+ */
+	background-image:         linear-gradient( #B82529 /*{a-bup-background-start}*/, #821a1d /*{a-bup-background-end}*/);
+	
 	background-origin: padding-box;
 	background-size: auto;
 	border-color: #A82226;
@@ -94,6 +128,7 @@
 	color: #2489ce /*{a-body-link-active}*/;
 }
 .ui-btn-up-a {
+  margin-top: 1px;
 	border: 1px solid 		#111 /*{a-bup-border}*/;
 	background: 			#333 /*{a-bup-background-color}*/;
 	font-weight: bold;
@@ -106,6 +141,7 @@
 	background-image:      -o-linear-gradient( #444 /*{a-bup-background-start}*/, #2d2d2d /*{a-bup-background-end}*/); /* Opera 11.10+ */
 	background-image:         linear-gradient( #444 /*{a-bup-background-start}*/, #2d2d2d /*{a-bup-background-end}*/);
 }
+
 .ui-btn-up-a:visited,
 .ui-btn-up-a a.ui-link-inherit {
 	color: 					#fff /*{a-bup-color}*/;
@@ -710,22 +746,39 @@ a.ui-link-inherit {
 }
 /* Active class used as the "on" state across all themes
 -----------------------------------------------------------------------------------------------------------*/
-.ui-btn-active {
-	background-color: #333;
-	background-image: -webkit-linear-gradient(top, #333, #666);
-	border-color: #111;
+
+.ui-radio-on.ui-btn-active {
+	border: 1px solid 		#2373a5 /*{global-active-border}*/;
+	background: 			#5393c5 /*{global-active-background-color}*/;
 	font-weight: bold;
 	color: 					#fff /*{global-active-color}*/;
+	cursor: pointer;
+	text-shadow: 0 /*{global-active-shadow-x}*/ 1px /*{global-active-shadow-y}*/ 1px /*{global-active-shadow-radius}*/ #3373a5 /*{global-active-shadow-color}*/;
+	text-decoration: none;
+	background-image: -webkit-gradient(linear, left top, left bottom, from( #5393c5 /*{global-active-background-start}*/), to( #6facd5 /*{global-active-background-end}*/)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient( #5393c5 /*{global-active-background-start}*/, #6facd5 /*{global-active-background-end}*/); /* Chrome 10+, Saf5.1+ */
+	background-image:    -moz-linear-gradient( #5393c5 /*{global-active-background-start}*/, #6facd5 /*{global-active-background-end}*/); /* FF3.6 */
+	background-image:     -ms-linear-gradient( #5393c5 /*{global-active-background-start}*/, #6facd5 /*{global-active-background-end}*/); /* IE10 */
+	background-image:      -o-linear-gradient( #5393c5 /*{global-active-background-start}*/, #6facd5 /*{global-active-background-end}*/); /* Opera 11.10+ */
+	background-image:         linear-gradient( #5393c5 /*{global-active-background-start}*/, #6facd5 /*{global-active-background-end}*/);
+	font-family: Helvetica, Arial, sans-serif /*{global-font-family}*/;
+}
+
+.ui-btn-active.ui-state-persist {
+  -moz-box-shadow:    inset 0 0 5px #000000;
+  -webkit-box-shadow: inset 0 0 5px #000000;
+  box-shadow:         inset 0 0 5px #000000;
+	background-color: #333;
+	background-image: -webkit-linear-gradient(top, #333, #585858);
+	border-color: #111;
+	font-weight: bold;
+	color: #fff /*{global-active-color}*/;
 	cursor: pointer;
 	text-shadow: 0 /*{global-active-shadow-x}*/ 1px /*{global-active-shadow-y}*/ 1px /*{global-active-shadow-radius}*/ #111 /*{global-active-shadow-color}*/;
 	text-decoration: none;
 	font-family: Helvetica, Arial, sans-serif /*{global-font-family}*/;
 }
-.ui-btn-active:visited,
-.ui-btn-active:hover,
-.ui-btn-active a.ui-link-inherit {
-	color: 					#fff /*{global-active-color}*/;
-}
+
 /* button inner top highlight
 -----------------------------------------------------------------------------------------------------------*/
 .ui-btn-inner {
@@ -1818,7 +1871,7 @@ div.ui-mobile-viewport { overflow-x: hidden; }
 .ui-footer .ui-btn-block { display: block; }
 .ui-header .ui-btn-inner,
 .ui-footer .ui-btn-inner,
-.ui-mini .ui-btn-inner { font-size: 12.5px; padding: .55em 11px .5em; }
+.ui-mini .ui-btn-inner { font-size: 12.5px; padding: .4em 11px .5em; }
 .ui-fullsize .ui-btn-inner,
 .ui-fullsize .ui-btn-inner { font-size: 16px; padding: .6em 20px; }
 .ui-btn-icon-notext { width: 24px; height: 24px; }
@@ -2209,7 +2262,7 @@ label.ui-select { font-size: 16px; line-height: 1.4; font-weight: normal; margin
 /* when no placeholder is defined in a multiple select, the header height doesn't even extend past the close button.  this shim's content in there */
 .ui-selectmenu .ui-header h1:after { content: '.'; visibility: hidden; }
 label.ui-input-text { font-size: 16px; line-height: 1.4; display: block; font-weight: normal; margin: 0 0 .3em; }
-input.ui-input-text { background-image: none; padding: .4em; margin: .5em 0; line-height: 1.4; font-size: 16px; display: inline-block; width: 20%; outline: 0; }
+input.ui-input-text { background-image: none; padding: .4em; margin: .5em 0; line-height: 1.4; font-size: 16px; display: inline-block; width: 100%; outline: 0; }
 textarea.ui-input-text { background-image: none; padding: .4em; margin: .5em 0; line-height: 1.4; font-size: 16px; display: block; width: 100%; outline: 0; }
 input.ui-input-text.ui-mini, textarea.ui-input-text.ui-mini { margin: .25em 0; }
 .ui-field-contain input.ui-input-text, .ui-field-contain textarea.ui-input-text { margin: 0; }

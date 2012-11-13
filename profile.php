@@ -19,7 +19,7 @@
 <html>
 
 <head>
-	<title>Books and Notes App</title> 
+	<title>Bookly</title> 
 	<meta charset="utf-8">
 	<meta name="apple-mobile-web-app-capable" content="yes">
  	<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -40,16 +40,13 @@
 
 	<div data-role="header">
 		<h1>Your Profile</h1>
-		<a href="logout.php">Logout</a>
-		<a href="editProfile.php" >Edit</a>
+		<a href="logout.php" data-transition="flip" id="left-action-btn">Logout</a>
+		<a href="editProfile.php" id="edit-btn">Edit</a>
 
 	</div><!-- /header -->
 
-<table class="tweet">
-  <tr class="tweet-header">
+  <div data-role="content">
 
-  	  
-      <td class="user-info">
     	<?php
 			require_once('connectvars.php');
 
@@ -61,47 +58,23 @@
 
 		//now we need to loop through each book and find all the matching sellers for each book			
 			while ($row = mysqli_fetch_assoc($result)) {
-	    		echo "<h2>Full name: ".$row["full_name"]."</h2>";
+	    		echo "<div class><span class='prof-block'><b>Name:</b></span> ".$row["full_name"]."</div><hr>";
 	    	}
     	?>
-      </td>
-  </tr>
-  <tr class="tweet-container">
-    <td colspan="2" class="tweet-content">
+
     	<?php
     		$result = mysqli_query($dbc, $query);
     		while ($row = mysqli_fetch_assoc($result)) {
 	    		// echo "<p>Gender: ".$row["gender"]."</p>";
-	    		echo "<p>Email: ".$row["email"]."</p>";
-	    		echo "<p>Phone Number: ".$row["phone_number"]."</p>";
+	    		echo "<div><span class='prof-block'><b>Email:</b></span> ".$row["email"]."</div><hr>";
+	    		echo "<div><span class='prof-block'><b>Phone:</b></span> ".$row["phone_number"]."</div><hr>";
 	    	}
     	?>
 
-    </td>
-  </tr>
-  <tr>
-    <td colspan="2" class="meta-and-actions">
-      <span class="metadata">
-      <!--<div class="tweet-text">Rating: 5/5 stars</div> -->
-    </td>
-  </tr>
-    <tr>
-    <td colspan="2" class="meta-and-actions">
-      <span class="metadata">
-		<!--<a href="#popupBasic" data-rel="popup">You Have 2 People to Rate!</a> 
-		<div data-role="popup" id="popupBasic">
-				<h1><a href="rateUser.html" data-icon="check">Rate Marshall Mathers</a></h1>
-				<h1><a href="rateUser.html" data-icon="check">Rate Kim Kardashian</a></h1>
-		</div>
-		-->
-    </td>
-  </tr>
-  
-</table>
-  <p> Add books/notes you're looking to buy in the Buy section and books/notes you're looking to sell in the Sell section.</p>
-  <p>  Then immediately see which students fill your need and directly message them right away!</p>
+  <!-- <p> Add books/notes you're looking to buy in the Buy section and books/notes you're looking to sell in the Sell section.</p>
+  <p>  Then immediately see which students fill your need and directly message them right away!</p> -->
 
-
+  </div>
 
 	<div data-role="footer" data-id="samebar" data-position="fixed" data-tap-toggle="false">
 		<div data-role="navbar" data-grid="b">
