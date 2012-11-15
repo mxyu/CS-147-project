@@ -15,7 +15,7 @@
 <html>
 
 <head>
-	<title>Books and Notes App</title> 
+	<title>Bookly</title> 
 	<meta charset="utf-8">
 	<meta name="apple-mobile-web-app-capable" content="yes">
  	<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -35,30 +35,30 @@
 <div data-role="page" id="filter">
 
 	<div data-role="header">
-		<h1>Sign In</h1>
-		<a href="index.html" data-icon="check">Sign Up</a>
+	
+		<h1>Bookly</h1>
+		<a href="index.html" id="left-action-btn">Sign Up</a>
 
 	</div><!-- /header -->
-
-
-  <h2>Sign in</h2>
-	<div class="body">
+	
+  <div data-role="content" style="margin-left: 30px; margin-right: 30px;">
+    
+	  <div style="font-size: 1.5em; font-weight: bold; margin: 10px 0;">Welcome to Bookly</div>
+	
 	  <form action="submitLogin.php" method="post" data-ajax="false">
 		<fieldset class="inputs">
-		  <label>Email</label>
 		  <div class="input-wrapper">
-			<input class="search-query span2"  type="text" id="emailaddress" name="emailaddress" placeholder="Email">
+			<input type="text" id="emailaddress" name="emailaddress" placeholder="Email">
 		  </div>
 	<!--       <div class="hint">You can also use your email address</div>-->
-		  <label>Password</label>
 		  <div class="input-wrapper">
-			<input class="search-query span2"  type="password" id="password" name="password" placeholder="Password">
+			<input type="password" id="password" name="password" placeholder="Password">
 		  </div>
 		</fieldset>
 			<button type="submit" name="submit"  class="btn btn-primary" style="margin-left:5px;">Log in</button>
 	  </form>
-	</div>
 
+</div>
 
 	
 
