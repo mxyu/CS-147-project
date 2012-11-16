@@ -140,8 +140,25 @@
 				  				  
 					if(!s_editing) {					  
 						s_editing = true;	
+<<<<<<< HEAD
             $(".edit-commands").show();
             $(".edit-commands-off").hide();
+=======
+            			$(".edit-commands").show();
+            			$(".edit-commands-off").hide();
+						//red button
+						$(".edit-commands")
+							.css("border-color", "transparent");
+						$(".edit-commands").children(":first")
+							.css("background", "-webkit-gradient(linear, left top, left bottom, from(#dd696d), to(#B82529))")
+							.css("border-style", "transparent")
+							.css("border-radius", "2px");
+						$(".edit-commands").children(":first").children(":first")
+							.css("color", "white")
+							.css("textShadow", "black 0px 0px 5px")
+							.css("outline-style", "none");
+
+>>>>>>> Final bookly
 						$('.s-edit-btn .ui-btn-text').fadeOut(50, function() {
 							$('.s-edit-btn .ui-btn-text').text('Cancel').fadeIn(50);												
 						});						
@@ -203,6 +220,7 @@
 					}
 				});
 				
+<<<<<<< HEAD
 				//click Mark sold
 				$(".s-mark.btn").button("disable");
 				// $(".s-mark-btn").click(function(event){
@@ -217,6 +235,8 @@
 				// 					window.location = "buyerPage.php?mark="+mark;
 				// 					return false;
 				// 				});
+=======
+>>>>>>> Final bookly
 				
 			});
 			
@@ -239,10 +259,14 @@
 		?>
 		<div class="content-primary">	
 		<a class="edit-commands-off" href="addBookSell.php" data-role="button" style="margin-top:-5px;  margin-bottom:25px;">Add books</a>	
+<<<<<<< HEAD
 		<center><div class="edit-commands">
 			<a href="#" class="s-mark-btn" data-role="button" data-inline="true" style="margin-top:-5px;  margin-bottom:25px;">Mark sold</a>
 			<a href="#s-pop" data-transition="pop" data-rel="popup" class="s-rmv-btn" data-role="button" data-inline="true" style="margin-top:-5px;  margin-bottom:25px;">Remove</a>
 		</div></center>			
+=======
+		<a class="edit-commands s-rmv-btn" href="#s-pop" data-transition="pop" data-rel="popup" data-role="button" style="margin-top:-5px;  margin-bottom:25px;">Remove selected</a>			
+>>>>>>> Final bookly
 
 			<ul id="sellList" data-role="listview" data-theme="d" data-divider-theme="d">
 				<?php
@@ -336,6 +360,11 @@
 				
 				//empty page? Get started here!
 			if($empty) {
+				?>
+				<script>
+					$(".edit-btn").hide();
+				</script>
+				<?php
 				echo "<style>
 				.ui-body-c{  
 					background: -webkit-linear-gradient(top, #f9f9f9, #f9f9f9);
@@ -373,6 +402,18 @@
                       <a class="s-confirm-remove" href="#" data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="b">Remove</a>  
                   </div>
               </div> -->
+<<<<<<< HEAD
+
+			<div data-role="popup" id="ssoldConfirm" data-overlay-theme="a" data-theme="c" style="max-width:400px;" class="ui-corner-all">
+			            <div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
+			                <h3>Would you like to mark the selected books as sold?</h3>
+							<p>These items will be removed from this list and the action cannot be undone.</p>
+			                <a href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c">Cancel</a>    
+			                <a id="confirm-sold" href="#" data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="b">Mark sold</a>  
+			            </div>
+			        </div>
+=======
+>>>>>>> Final bookly
 
 			<div data-role="popup" id="ssoldConfirm" data-overlay-theme="a" data-theme="c" style="max-width:400px;" class="ui-corner-all">
 			            <div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
@@ -383,7 +424,10 @@
 			            </div>
 			        </div>
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> Final bookly
 					<div data-role="popup" id="success" class="ui-content">
 						<p>Books successfully removed!</p>
 					</div>

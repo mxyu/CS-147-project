@@ -69,16 +69,25 @@
 	.ui-btn-inner {
 		border-color: transparent;
 	}
+<<<<<<< HEAD
+=======
+	
+>>>>>>> Final bookly
 	</style>
 
 	<div data-role="header">
+		
 		<h1>Buy</h1>
 		<a href="#" class="edit-btn ui-btn-right" id="edit-btn">Edit</a>
 			
 	</div><!-- /header -->
 	
 	<script>
+<<<<<<< HEAD
 	    var removeBuy = function() {
+=======
+	     var removeBuy = function() {
+>>>>>>> Final bookly
          var selected = [];
          $(".y-selected").each(function() {
            selected.push($(this).attr('id'));
@@ -140,12 +149,30 @@
 				
 				restoreDefaults();
 				
+<<<<<<< HEAD
+=======
+				
+				
+>>>>>>> Final bookly
 				$(".edit-btn").click(function(){
 					if(!editing) {
 					  					  
 						editing = true;	
 						$(".edit-commands").show();
 						$(".edit-commands-off").hide();
+<<<<<<< HEAD
+=======
+						$(".edit-commands")
+							.css("border-color", "transparent");
+						$(".edit-commands").children(":first")
+							.css("background", "-webkit-gradient(linear, left top, left bottom, from(#dd696d), to(#B82529))")
+							.css("border-style", "transparent")
+							.css("border-radius", "2px");
+						$(".edit-commands").children(":first").children(":first")
+							.css("color", "white")
+							.css("textShadow", "black 0px 0px 5px")
+							.css("outline-style", "none");
+>>>>>>> Final bookly
 						$('.edit-btn .ui-btn-text').fadeOut(50, function() {
 							$('.edit-btn .ui-btn-text').text('Cancel').fadeIn(50);												
 						});						
@@ -247,11 +274,17 @@
 ?>
 		<div class="content-primary">
 
+<<<<<<< HEAD
 		<a class="edit-commands-off" href="addBookBuy.php" data-role="button" style="margin-top:-5px;  margin-bottom:25px;">Find and add books</a>
 		<center><div class="edit-commands">
 			<a href="#" class="b-mark-btn" data-role="button" data-inline="true" style="margin-top:-5px;  margin-bottom:25px;">Mark bought</a>
 			<a href="#b-pop" data-transition="pop" data-rel="popup" class="b-rmv-btn" data-role="button" data-inline="true" style="margin-top:-5px;  margin-bottom:25px;">Remove</a>
 		</div></center>
+=======
+		<a class="edit-commands-off" href="addBookBuy.php" data-role="button" style="margin-top:-5px;  margin-bottom:25px;">Add books by course</a>
+		<a class="edit-commands b-rmv-btn" href="#b-pop" data-transition="pop" data-rel="popup" data-role="button" style="margin-top:-5px;  margin-bottom:25px;">Remove selected</a>
+		
+>>>>>>> Final bookly
 		<ul id="buyList" data-role="listview" data-theme="d" data-divider-theme="d">
 			<?php
 			require_once('connectvars.php');
@@ -343,6 +376,11 @@
 
 			//empty page? Get started here!
 			if($empty) {
+				?>
+				<script>
+					$(".edit-btn").hide();
+				</script>
+				<?php
 				echo "<style>
 				.ui-body-c{  
 					background: -webkit-linear-gradient(top, #f9f9f9, #f9f9f9);
