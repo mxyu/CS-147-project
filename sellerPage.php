@@ -19,7 +19,7 @@
 <html>
 
 <head>
-	<title>Bookly</title> 
+	<title>Bookends</title> 
 	<meta charset="utf-8">
 	<meta name="apple-mobile-web-app-capable" content="yes">
  	<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -32,6 +32,7 @@
 	
 	<script src="jquery-1.8.2.min.js"></script>
 	<script src="jquery.mobile-1.2.0.js"></script>
+	<script src="//cdn.optimizely.com/js/141321804.js"></script>
 </head> 
 <body> 
 
@@ -66,10 +67,23 @@
 		border-color: transparent;
 	}
 	
+	.ui-li-aside.ui-li-desc.free{
+		width:30%;
+		height:32px;
+		padding-top:10px;
+	}
+	.ui-li-aside.ui-li-desc{
+		width:30%;
+	}
+	
+	.numbuyers{
+		color:#B51616;
+	}
+	
 	</style>
 
 	<div data-role="header">
-		<h1>Sell</h1>
+		<h1>Books to sell</h1>
 		<a href="#" class="s-edit-btn ui-btn-right" id="edit-btn">Edit</a>
 	</div><!-- /header -->
 	
@@ -140,10 +154,6 @@
 				  				  
 					if(!s_editing) {					  
 						s_editing = true;	
-<<<<<<< HEAD
-            $(".edit-commands").show();
-            $(".edit-commands-off").hide();
-=======
             			$(".edit-commands").show();
             			$(".edit-commands-off").hide();
 						//red button
@@ -158,7 +168,6 @@
 							.css("textShadow", "black 0px 0px 5px")
 							.css("outline-style", "none");
 
->>>>>>> Final bookly
 						$('.s-edit-btn .ui-btn-text').fadeOut(50, function() {
 							$('.s-edit-btn .ui-btn-text').text('Cancel').fadeIn(50);												
 						});						
@@ -220,23 +229,6 @@
 					}
 				});
 				
-<<<<<<< HEAD
-				//click Mark sold
-				$(".s-mark.btn").button("disable");
-				// $(".s-mark-btn").click(function(event){
-				// 					$('#ssoldConfirm').popup("open");
-				// 				});
-				// 				$("#confirm-sold").click(function(event){
-				// 					var selected = [];
-				// 					$(".y-selected").each(function() {
-				// 						selected.push($(this).attr('id'));
-				// 					});
-				// 					var mark = selected.join('-');
-				// 					window.location = "buyerPage.php?mark="+mark;
-				// 					return false;
-				// 				});
-=======
->>>>>>> Final bookly
 				
 			});
 			
@@ -258,17 +250,12 @@
 
 		?>
 		<div class="content-primary">	
-		<a class="edit-commands-off" href="addBookSell.php" data-role="button" style="margin-top:-5px;  margin-bottom:25px;">Add books</a>	
-<<<<<<< HEAD
-		<center><div class="edit-commands">
-			<a href="#" class="s-mark-btn" data-role="button" data-inline="true" style="margin-top:-5px;  margin-bottom:25px;">Mark sold</a>
-			<a href="#s-pop" data-transition="pop" data-rel="popup" class="s-rmv-btn" data-role="button" data-inline="true" style="margin-top:-5px;  margin-bottom:25px;">Remove</a>
-		</div></center>			
-=======
+				
+		<a class="edit-commands-off" href="addBookSell.php" data-role="button" style="margin-top:-5px;  margin-bottom:25px;">Add a book</a>	
 		<a class="edit-commands s-rmv-btn" href="#s-pop" data-transition="pop" data-rel="popup" data-role="button" style="margin-top:-5px;  margin-bottom:25px;">Remove selected</a>			
->>>>>>> Final bookly
 
 			<ul id="sellList" data-role="listview" data-theme="d" data-divider-theme="d">
+
 				<?php
 				require_once('connectvars.php');
 				$dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
@@ -327,7 +314,9 @@
 						}
 					}
 				}
-
+				
+				
+				$buying = 1;
 				foreach ($coursemap as $courseid => $textbookArr) {
 					$query_cname = "SELECT * FROM courses WHERE course_id = $courseid";
 					$result_cname = mysqli_query($dbc, $query_cname);
@@ -338,7 +327,10 @@
 						$query_bname = "SELECT * FROM textbooks WHERE id = $textbook_id";
 						$result_bname = mysqli_query($dbc, $query_bname);
 						while ($row = mysqli_fetch_assoc($result_bname)){
-							echo("<li><div style='position:absolute;left:-20px;top:22px;' class='cbox' data-role='button' data-icon='' data-iconpos='notext' data-mini='true' data-inline='true'></div><div style='position:absolute;left:8px;top:22px;' class='cbox-on' data-role='button' data-icon='check' data-iconpos='notext' data-mini='true' data-inline='true'></div><a id='".$textbook_id."' data-transition='slide' href=\"sellerPageList.php?textbook_id=".$textbook_id."\"><div style='position:relative; top: 0px;' class='entry'><h3>".$row["title"]."</h3><p>".$row["author"]."</p></div>");
+							$query_numbuyers = "SELECT COUNT(id) FROM user_trade_objects WHERE trade_object_id = $textbook_id AND buying = $buying";
+							$result_numbuyers = mysqli_query($dbc, $query_numbuyers);
+							$numbuyers = mysqli_fetch_assoc($result_numbuyers);
+							echo("<li><div style='position:absolute;left:-20px;top:22px;' class='cbox' data-role='button' data-icon='' data-iconpos='notext' data-mini='true' data-inline='true'></div><div style='position:absolute;left:8px;top:22px;' class='cbox-on' data-role='button' data-icon='check' data-iconpos='notext' data-mini='true' data-inline='true'></div><a id='".$textbook_id."' data-transition='slide' href=\"sellerPageList.php?textbook_id=".$textbook_id."\"><div style='position:relative; top: 0px; width:70%' class='entry'><h3>".$row["title"]."</h3><p>".$row["author"]."</p></div>");
 							
 							
 							$pquery = "SELECT * FROM user_trade_objects WHERE selling = 1 AND user_id = '$userid' AND trade_object_id = $textbook_id";
@@ -346,13 +338,24 @@
 							while($row = mysqli_fetch_assoc($presult)) {
 								$price = $row["price"];
 								$negotiable = $row["negotiable"];
-								echo "<p class=\"ui-li-aside ui-li-desc\" style=\"max-width: 25%\"><strong style=\"margin-top:8px; font-size:22px;\">$".$price."</strong>";
-								if($negotiable == 1){
-									echo "<br><span style='font-size:12px'>negotiable</span></p>";
-								} else {
-									echo "<br><span style='font-size:12px'>non-negotiable</span></p>";				
+								if($price == NULL || $price == 0){
+									echo "<p class='ui-li-aside ui-li-desc free'><strong style=\"font-size:14px;\">FREE</strong><br><span style='font-size:11px;color:#B51616'>";
+									echo($numbuyers["COUNT(id)"]);
+									echo(" buyers</span></p>");
+								}else{
+									echo "<p class=\"ui-li-aside ui-li-desc\"><strong style=\"margin-top:8px; font-size:12px;\">$".$price."</strong>";
+									if($negotiable == 1){
+										echo ("<br><span style='font-size:11px;'>negotiable<br><span class='numbuyers'>");
+										echo($numbuyers["COUNT(id)"]);
+										echo(" buyers</span></span></p>");
+									}else{
+										echo ("<br><span style='font-size:11px'>fixed price<br>");
+										echo($numbuyers["COUNT(id)"]);
+										echo(" buyers</span></p>");				
+									}
+									
+									echo "</a></li>";
 								}
-								echo "</a></li>";
 							}
 						}
 					}
@@ -402,18 +405,6 @@
                       <a class="s-confirm-remove" href="#" data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="b">Remove</a>  
                   </div>
               </div> -->
-<<<<<<< HEAD
-
-			<div data-role="popup" id="ssoldConfirm" data-overlay-theme="a" data-theme="c" style="max-width:400px;" class="ui-corner-all">
-			            <div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
-			                <h3>Would you like to mark the selected books as sold?</h3>
-							<p>These items will be removed from this list and the action cannot be undone.</p>
-			                <a href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c">Cancel</a>    
-			                <a id="confirm-sold" href="#" data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="b">Mark sold</a>  
-			            </div>
-			        </div>
-=======
->>>>>>> Final bookly
 
 			<div data-role="popup" id="ssoldConfirm" data-overlay-theme="a" data-theme="c" style="max-width:400px;" class="ui-corner-all">
 			            <div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
@@ -424,10 +415,7 @@
 			            </div>
 			        </div>
 
-<<<<<<< HEAD
-=======
 
->>>>>>> Final bookly
 					<div data-role="popup" id="success" class="ui-content">
 						<p>Books successfully removed!</p>
 					</div>

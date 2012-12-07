@@ -19,7 +19,7 @@
 <html>
 
 <head>
-	<title>Bookly</title> 
+	<title>Bookends</title> 
 	<meta charset="utf-8">
 	<meta name="apple-mobile-web-app-capable" content="yes">
  	<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -32,6 +32,7 @@
 	
 	<script src="jquery-1.8.2.min.js"></script>
 	<script src="jquery.mobile-1.2.0.js"></script>
+	<script src="//cdn.optimizely.com/js/141321804.js"></script>
 
 </head> 
 <body> 
@@ -40,7 +41,7 @@
 
 	<div data-role="header">
 		<h1>Your Profile</h1>
-		<a href="logout.php" data-transition="flip" id="left-action-btn">Logout</a>
+		<a href="logout.php" data-ajax="false" data-transition="flip" id="left-action-btn">Logout</a>
 		<a href="editProfile.php" id="edit-btn">Edit</a>
 
 	</div><!-- /header -->
@@ -70,6 +71,7 @@
 	    		echo "<div><span class='prof-block'><b>Phone:</b></span> ".$row["phone_number"]."</div><hr>";
 	    	}
     	?>
+
 
   <!-- <p> Add books/notes you're looking to buy in the Buy section and books/notes you're looking to sell in the Sell section.</p>
   <p>  Then immediately see which students fill your need and directly message them right away!</p> -->

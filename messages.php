@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>Books and Notes App</title> 
+	<title>Bookends</title> 
 	<meta charset="utf-8">
 	<meta name="apple-mobile-web-app-capable" content="yes">
  	<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -15,6 +15,7 @@
 	
 	<script src="jquery-1.8.2.min.js"></script>
 	<script src="jquery.mobile-1.2.0.js"></script>
+	<script src="//cdn.optimizely.com/js/141321804.js"></script>
 
 </head> 
 <body> 

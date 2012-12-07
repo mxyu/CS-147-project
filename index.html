@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>Bookly</title> 
+	<title>Bookends</title> 
 	<meta charset="utf-8">
 	<meta name="apple-mobile-web-app-capable" content="yes">
  	<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -15,7 +15,8 @@
 	
 	<script src="jquery-1.8.2.min.js"></script>
 	<script src="jquery.mobile-1.2.0.js"></script>
-
+	<script src="//cdn.optimizely.com/js/141321804.js"></script>
+	
 <script>
 	function validateForm(){
 		var x=document.forms["signup"]["emailaddress"].value;
@@ -39,6 +40,20 @@
 </script>
 
 
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36683607-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
 </head> 
 <body> 
 
@@ -47,14 +62,14 @@
 
 
 	<div data-role="header">
-		<h1 style="font-family: HelveticaNeue, Helvetica">Bookly</h1>
+		<h1 style="font-family: HelveticaNeue, Helvetica">Booklends</h1>
 
 	</div><!-- /header -->
 	<div data-role="content" style="margin-left: 30px; margin-right: 30px;">
     <div class="input-wrapper">
 	  <div style="font-size: 1.5em; font-weight: bold; margin: 10px 0;">Sign up</div>
 	  <div style="font-size: 14px; margin-bottom: 10px;"class="hint">
-		Already have an account? <a href="login.php">Sign in</a>
+		Already have an account? <a href="login.php" data-ajax="false">Sign in</a>
 	  </div>
 	</div>
 	<form method="post" action="signup.php" name="signup" data-ajax="false" onsubmit="return validateForm();" >
@@ -85,6 +100,8 @@
 	
 
 </div><!-- /page -->
+
+
 
 
 </body>

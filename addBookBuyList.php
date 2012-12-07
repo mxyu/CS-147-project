@@ -5,7 +5,7 @@
 
 <html>
 <head>
-	<title>Bookly</title> 
+	<title>Bookends</title> 
 	<meta name="apple-mobile-web-app-capable" content="yes">
  	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
@@ -17,6 +17,7 @@
 	
 	<script src="jquery-1.8.2.min.js"></script>
 	<script src="jquery.mobile-1.2.0.js"></script>
+	<script src="//cdn.optimizely.com/js/141321804.js"></script>
 
 </head> 
 <body> 
@@ -93,7 +94,8 @@ $(document).bind('pageinit', function() {
 					?>
 			    </fieldset>
 			</div>
-			<a class="doneButton" href="#" data-role="button" style="margin-top:-5px;  margin-bottom:25px;">Finish adding books</a>
+			<a class="doneButton" href="#" data-role="button" >Finish adding books</a>
+			
 
 	
 			</div><!--/content-primary -->		

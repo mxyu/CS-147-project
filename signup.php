@@ -41,7 +41,7 @@
 				setcookie ('userid', $_SESSION['userid'], time() + (60 * 60 * 24 * 30));		// Expires in 30 days.
 				// Close the database and redirect to index.php.
 				mysqli_close($dbc);
-				header("Location: profile.php");
+				header("Location: help.php");
 				
 			}
 			

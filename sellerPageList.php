@@ -20,7 +20,7 @@
 <html>
 
 <head>
-	<title>Bookly</title> 
+	<title>Bookends</title> 
 	<meta charset="utf-8">
 	<meta name="apple-mobile-web-app-capable" content="yes">
  	<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -33,6 +33,8 @@
 	
 	<script src="jquery-1.8.2.min.js"></script>
 	<script src="jquery.mobile-1.2.0.js"></script>
+	<script src="//cdn.optimizely.com/js/141321804.js"></script>
+	
 	<style>
 	#price {
 		font-size: 25px;
@@ -79,29 +81,41 @@
 		$textbook_id = $_GET["textbook_id"];
 		$query4 = "SELECT * FROM textbooks WHERE id = '$textbook_id'";
 		$result4 = mysqli_query($dbc, $query4);
-		while ($row4 = mysqli_fetch_assoc($result4)) {
-			$textbook_name = $row4["title"];
-			echo "<h1>Who is buying ".$textbook_name."?</h1>";
-		}		
+		echo "<h1>Buyers List</h1>";
 	?>
 		<a href="sellerPage.php" id="left-action-btn" data-transition='slide' data-direction='reverse' data-icon="back">Back</a>
 
 	</div><!-- /header -->
 	
+		
+	
 	<div data-role="content">
 		<div class="content-primary">
-		<ul data-role="listview" data-theme="d" data-divider-theme="d">
+			<ul data-role="listview" data-theme="d" data-divider-theme="d">
+			
+			<?php
+				while ($row4 = mysqli_fetch_assoc($result4)) {
+					$textbook_name = $row4["title"];
+					echo "<li data-role='list-divider'>Here are people who would like to buy ".$textbook_name.": </li>";
+				}		
+			?>
+			
+		
 			<?php
 				$textbook_id = $_GET["textbook_id"];				
-				$query2 = "SELECT * FROM user_trade_objects WHERE buying = 1 AND trade_object_id = '$textbook_id' AND completed = 0";
+				$query2 = "SELECT * FROM user_trade_objects WHERE buying = 1 AND trade_object_id = '$textbook_id'";
 				$result2 = mysqli_query($dbc, $query2);
 				while ($row2 = mysqli_fetch_assoc($result2)) {
 					$user_id = $row2["user_id"];
 					$query3 = "SELECT * FROM users WHERE id = '$user_id'";
 					$result3 = mysqli_query($dbc, $query3);
 					while ($row3 = mysqli_fetch_assoc($result3)){
-						echo "<li><a href='#message' data-rel='popup' data-position-to='window' data-transition='pop'>";
+						echo "<li><a href='mailto:".$row3["email"]."' data-rel='popup' data-position-to='window' data-transition='pop'>";
+						if($row3["full_name"]!=NULL){
+							echo "<h3>".$row3["full_name"]."</h3>";
+						} else{
 						echo "<h3>".$row3["email"]."</h3>";
+						}
 						echo "</a></li>";
 					}
 				}			

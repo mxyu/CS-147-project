@@ -20,7 +20,7 @@
 <html>
 
 <head>
-	<title>Bookly</title> 
+	<title>Bookends</title> 
 	<meta charset="utf-8">
 	<meta name="apple-mobile-web-app-capable" content="yes">
  	<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -33,10 +33,26 @@
 	
 	<script src="jquery-1.8.2.min.js"></script>
 	<script src="jquery.mobile-1.2.0.js"></script>
+	<script src="//cdn.optimizely.com/js/141321804.js"></script>
+	
 </head> 
 <body> 
 
 <div data-role="page" id="filter">
+
+	<style>
+		.ui-li-heading {
+			width:70%;
+		}
+		.ui-li-aside.ui-li-desc{
+			width:30%;
+		}
+		.ui-li-aside.ui-li-desc.free{
+			width:30%;
+			height:27px;
+			padding-top:12px;
+		}
+	</style>
 
 	<div data-role="header">
 		<?php
@@ -45,41 +61,55 @@
 			$textbook_id = $_GET["textbook_id"];
 			$query4 = "SELECT * FROM textbooks WHERE id = '$textbook_id'";
 			$result4 = mysqli_query($dbc, $query4);
-			while ($row4 = mysqli_fetch_assoc($result4)) {
-				$textbook_name = $row4["title"];
-				echo "<h1>Who is selling ".$textbook_name."?</h1>";
-			}		
+			echo "<h1>Sellers List</h1>";
+			
 		?>
 		<a href="buyerPage.php" data-direction="reverse" data-transition="slide" data-icon="back" id="left-action-btn">Back</a>
 
 	</div><!-- /header -->
 	
+		
+	
 	<div data-role="content">
 		<div class="content-primary">
+			
 
 		<ul data-role="listview" data-icon="false" data-theme="d" data-divider-theme="d">
-			
 			<?php
+				while ($row4 = mysqli_fetch_assoc($result4)) {
+					$textbook_name = $row4["title"];
+					echo "<li data-role='list-divider'>Here are people selling ".$textbook_name.": </li>";
+				}		
+			
 				$textbook_id = $_GET["textbook_id"];				
-				$query2 = "SELECT * FROM user_trade_objects WHERE selling = 1 AND trade_object_id = '$textbook_id' AND completed = 0";
+				$query2 = "SELECT * FROM user_trade_objects WHERE selling = 1 AND trade_object_id = '$textbook_id' ORDER BY price";
 				$result2 = mysqli_query($dbc, $query2);
 				while ($row2 = mysqli_fetch_assoc($result2)) {
-					echo "<li><a href='#message' data-rel='popup' data-position-to='window' data-transition='pop'>";
 					$user_id = $row2["user_id"];
 					$price = $row2["price"];
 					$negotiable = $row2["negotiable"];
 					$query3 = "SELECT * FROM users WHERE id = '$user_id'";
 					$result3 = mysqli_query($dbc, $query3);
 					while ($row3 = mysqli_fetch_assoc($result3)){
+						echo "<li><a href='mailto:".$row3["email"]."' data-rel='popup' data-position-to='window' data-transition='pop'>";
+						if($row3["full_name"]!=NULL){
+							echo "<h3>".$row3["full_name"]."</h3>";
+						} else{
 						echo "<h3>".$row3["email"]."</h3>";
+						}
 					}
-					echo "<p class=\"ui-li-aside ui-li-desc\"><strong style=\"margin-top:8px; font-size:22px;\">$".$price."</strong>";
-					if($negotiable == 1){
-						echo "<br><span style='font-size:12px'>negotiable</span></p>";
+					if($price == NULL || $price == 0){
+						echo "<p class='ui-li-aside ui-li-desc free'><strong style=\"font-size:16px;\">FREE</strong></p>";
 					}else{
-						echo "<br><span style='font-size:12px'>non-negotiable</span></p>";				
+						echo "<p class=\"ui-li-aside ui-li-desc\"><strong style=\"margin-top:8px; font-size:22px;\">$".$price."</strong>";
+						if($negotiable == 1){
+							echo "<br><span style='font-size:12px;color:#00BF19;'>negotiable</span></p>";
+						}else{
+							echo "<br><span style='font-size:12px'>fixed price</span></p>";				
+						}
+						echo "</a></li>";
 					}
-					echo "</a></li>";
+					
 				}			
 			?>
 
@@ -101,9 +131,6 @@
 		</ul>
 		<div data-role="popup" id="message" data-theme="d" data-overlay-theme="b" class="ui-content" style="max-width:340px;">
 			<label for="textarea-a"><b>Message Person:</b></label>
-			<?php
-				echo "";
-			?>
 			<textarea style="margin-bottom:15px;" name="textarea" id="textarea-a">Hi Person, I'm interested in purchasing Current Book from you!
 			</textarea>
 			<a href="buyerPageList.php" style="width: 41%" data-role="button" data-rel="back" data-inline="true" data-mini="true">Cancel</a>	

@@ -21,7 +21,7 @@
 <html>
 
 <head>
-	<title>Bookly</title> 
+	<title>Bookends</title> 
 	<meta charset="utf-8">
 	<meta name="apple-mobile-web-app-capable" content="yes">
  	<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -34,6 +34,7 @@
 	
 	<script src="jquery-1.8.2.min.js"></script>
 	<script src="jquery.mobile-1.2.0.js"></script>
+	<script src="//cdn.optimizely.com/js/141321804.js"></script>
 
 
 </head> 
@@ -55,6 +56,7 @@
 		width: 20px;
 	}	
 	
+	
 	.ui-btn-icon-notext .ui-btn-inner .ui-icon {
 		margin: 1px 0px 0px 2px;
 		height: 16px;
@@ -69,25 +71,24 @@
 	.ui-btn-inner {
 		border-color: transparent;
 	}
-<<<<<<< HEAD
-=======
+	.numsellers{
+		font-size:12px;
+		color:#B51616;
+		position:absolute;
+		right:10px;
+	}
 	
->>>>>>> Final bookly
 	</style>
 
 	<div data-role="header">
 		
-		<h1>Buy</h1>
+		<h1>Books to buy</h1>
 		<a href="#" class="edit-btn ui-btn-right" id="edit-btn">Edit</a>
 			
 	</div><!-- /header -->
 	
 	<script>
-<<<<<<< HEAD
-	    var removeBuy = function() {
-=======
 	     var removeBuy = function() {
->>>>>>> Final bookly
          var selected = [];
          $(".y-selected").each(function() {
            selected.push($(this).attr('id'));
@@ -149,19 +150,14 @@
 				
 				restoreDefaults();
 				
-<<<<<<< HEAD
-=======
 				
 				
->>>>>>> Final bookly
 				$(".edit-btn").click(function(){
 					if(!editing) {
 					  					  
 						editing = true;	
 						$(".edit-commands").show();
 						$(".edit-commands-off").hide();
-<<<<<<< HEAD
-=======
 						$(".edit-commands")
 							.css("border-color", "transparent");
 						$(".edit-commands").children(":first")
@@ -172,7 +168,6 @@
 							.css("color", "white")
 							.css("textShadow", "black 0px 0px 5px")
 							.css("outline-style", "none");
->>>>>>> Final bookly
 						$('.edit-btn .ui-btn-text').fadeOut(50, function() {
 							$('.edit-btn .ui-btn-text').text('Cancel').fadeIn(50);												
 						});						
@@ -274,17 +269,9 @@
 ?>
 		<div class="content-primary">
 
-<<<<<<< HEAD
-		<a class="edit-commands-off" href="addBookBuy.php" data-role="button" style="margin-top:-5px;  margin-bottom:25px;">Find and add books</a>
-		<center><div class="edit-commands">
-			<a href="#" class="b-mark-btn" data-role="button" data-inline="true" style="margin-top:-5px;  margin-bottom:25px;">Mark bought</a>
-			<a href="#b-pop" data-transition="pop" data-rel="popup" class="b-rmv-btn" data-role="button" data-inline="true" style="margin-top:-5px;  margin-bottom:25px;">Remove</a>
-		</div></center>
-=======
-		<a class="edit-commands-off" href="addBookBuy.php" data-role="button" style="margin-top:-5px;  margin-bottom:25px;">Add books by course</a>
+		<a class="edit-commands-off" href="addBookBuy.php" data-role="button" style="margin-top:-5px; margin-bottom:25px;">Add books by course</a>
 		<a class="edit-commands b-rmv-btn" href="#b-pop" data-transition="pop" data-rel="popup" data-role="button" style="margin-top:-5px;  margin-bottom:25px;">Remove selected</a>
 		
->>>>>>> Final bookly
 		<ul id="buyList" data-role="listview" data-theme="d" data-divider-theme="d">
 			<?php
 			require_once('connectvars.php');
@@ -357,7 +344,9 @@
 					}
 				}
 			}
-
+			
+			$selling = 1;
+			
 			krsort($coursemap);
 			foreach ($coursemap as $courseid => $textbookArr) {
 				$query_cname = "SELECT * FROM courses WHERE course_id = $courseid";
@@ -369,7 +358,12 @@
 					$query_bname = "SELECT * FROM textbooks WHERE id = $textbook_id";
 					$result_bname = mysqli_query($dbc, $query_bname);
 					while ($row = mysqli_fetch_assoc($result_bname)){
-						echo("<li><div style='position:absolute;left:-20px;top:22px;' class='cbox' data-role='button' data-icon='' data-iconpos='notext' data-mini='true' data-inline='true'></div><div style='position:absolute;left:8px;top:22px;' class='cbox-on' data-role='button' data-icon='check' data-iconpos='notext' data-mini='true' data-inline='true'></div><a id='".$textbook_id."' data-transition='slide' href=\"buyerPageList.php?textbook_id=".$textbook_id."\"><div style='position:relative; top: 0px;' class='entry'><h3>".$row["title"]."</h3><p>".$row["author"]."</p></div></a></li>");
+						$query_numsellers = "SELECT COUNT(id) FROM user_trade_objects WHERE trade_object_id = $textbook_id AND selling = $selling";
+						$result_numsellers = mysqli_query($dbc, $query_numsellers);
+						$numsellers = mysqli_fetch_assoc($result_numsellers);
+						echo("<li><div style='position:absolute;left:-20px;top:22px;' class='cbox' data-role='button' data-icon='' data-iconpos='notext' data-mini='true' data-inline='true'></div><div style='position:absolute;left:8px;top:22px;' class='cbox-on' data-role='button' data-icon='check' data-iconpos='notext' data-mini='true' data-inline='true'></div><a id='".$textbook_id."' data-transition='slide' href=\"buyerPageList.php?textbook_id=".$textbook_id."\"><div style='position:relative; top: 0px;' class='entry'><h3>".$row["title"]."</h3><p>".$row["author"]."<span class='numsellers'>");
+						echo($numsellers["COUNT(id)"]);
+						echo(" sellers</span></p></div></a></li>");
 					}
 				}
 			}
